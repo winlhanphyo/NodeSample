@@ -1,0 +1,588 @@
+openapi: 3.0.2
+servers:
+  - url: http://127.0.0.1:3000
+info:
+  description: This is API Doc for NodeJS Ancor
+  title: Swagger API Doc for NodeJS Ancor
+  version: 1.0.0
+
+tags:
+  - name: Blogs
+    description: Operations about Blogs
+  - name: Users
+    description: Operations about Users
+
+paths:
+  # Blog Routes
+  /api/blogs:
+    get:
+      tags:
+        - Blogs
+      summary: Get all blogs
+      description: This can only be done by the logged in user.
+      responses:
+        "200":
+          description: Returns all Blogs
+    post:
+      tags:
+        - Blogs
+      summary: Create a new blog
+      description: This can only be done by the logged in user.
+      requestBody:
+        description: Create a new blog
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "Post01"
+                description:
+                  type: string
+                  example: "Description01"
+          application/xml:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "Post01"
+                description:
+                  type: string
+                  example: "Description01"
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "Post01"
+                description:
+                  type: string
+                  example: "Description01"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: "Post01"
+                  description:
+                    type: string
+                    example: "Description01"
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: "Post01"
+                  description:
+                    type: string
+                    example: "Description01"
+        "405":
+          description: Invalid input
+
+  /api/blogs/{blogId}:
+    get:
+      tags:
+        - Blogs
+      summary: Find blog by ID
+      description: This can only be done by the logged in user.
+      operationId: getBlogById
+      parameters:
+        - name: blogId
+          in: path
+          description: ID of blog to return
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    example: "62fde243b554f4955fdf7914"
+                  title:
+                    type: string
+                    example: "Title01"
+                  description:
+                    type: string
+                    example: "Description01"
+                  createdAt:
+                    type: string
+                    format: date
+                  updatedAt:
+                    type: string
+                    format: date
+        "404":
+          description: Blog not found
+    put:
+      tags:
+        - Blogs
+      summary: Update a blog
+      description: This can only be done by the logged in user.
+      operationId: updateBlogId
+      parameters:
+        - name: blogId
+          in: path
+          description: ID of blog to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existing blog
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "Post01"
+                description:
+                  type: string
+                  example: "Description01"
+      responses:
+        "200":
+          description: Updated Successfully!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    example: "62fde243b554f4955fdf7914"
+                  title:
+                    type: string
+                    example: "Title Updated"
+                  description:
+                    type: string
+                    example: "Description Updated"
+                  createdAt:
+                    type: string
+                    format: date
+                  updatedAt:
+                    type: string
+                    format: date
+        "405":
+          description: Invalid input
+    delete:
+      tags:
+        - Blogs
+      summary: Delete a blog
+      description: This can only be done by the logged in user.
+      operationId: deleteBlog
+      parameters:
+        - name: blogId
+          in: path
+          description: Blog id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted Successfully!
+        "400":
+          description: Invalid blog value
+
+  /api/blogs/search:
+    post:
+      tags:
+        - Blogs
+      summary: Get search blogs
+      description: This can only be done by the logged in user.
+      requestBody:
+        description: Title of the blog that you want to search
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "Blog"
+      responses:
+        "200":
+          description: Returns search Blogs
+        "400":
+          description: An error occured
+
+  # User Routes
+  /api/users:
+    get:
+      tags:
+        - Users
+      summary: Get all Users
+      description: This can only be done by the logged in user.
+      responses:
+        "200":
+          description: Returns all Users
+    post:
+      tags:
+        - Users
+      summary: Create user
+      description: This can only be done by the logged in user.
+      operationId: createUser
+      requestBody:
+        description: Created user
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Post01"
+                email:
+                  type: string
+                  example: "Description01"
+                password:
+                  type: string
+                  format: password
+                  example: "password123"
+                type:
+                  type: string
+                  description: User Roles
+                  enum:
+                    - Admin
+                    - User
+                phone:
+                  type: string
+                  example: "0912345678"
+                dob:
+                  type: string
+                  format: date
+                  example: 2022-06-30
+                address:
+                  type: string
+                  example: "Address"
+                profile:
+                  type: string
+                  example: "apiuploads/0fe05c06-2f9d-4056-b80d-ffa37dee7c93_img1.jpg"
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Post01"
+                email:
+                  type: string
+                  example: "Description01"
+                password:
+                  type: string
+                  format: password
+                  example: "password123"
+                type:
+                  type: string
+                  description: User Roles
+                  enum:
+                    - Admin
+                    - User
+                phone:
+                  type: string
+                  example: "0912345678"
+                dob:
+                  type: string
+                  format: date
+                  example: 2022-06-30
+                address:
+                  type: string
+                  example: "Address"
+                profile:
+                  type: string
+                  example: "apiuploads/0fe05c06-2f9d-4056-b80d-ffa37dee7c93_img1.jpg"
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Post01"
+                email:
+                  type: string
+                  example: "Description01"
+                password:
+                  type: string
+                  format: password
+                  example: "password123"
+                type:
+                  type: string
+                  description: User Roles
+                  enum:
+                    - Admin
+                    - User
+                phone:
+                  type: string
+                  example: "0912345678"
+                dob:
+                  type: string
+                  format: date
+                  example: 2022-06-30
+                address:
+                  type: string
+                  example: "Address"
+                profile:
+                  type: string
+                  example: "apiuploads/0fe05c06-2f9d-4056-b80d-ffa37dee7c93_img1.jpg"
+      responses:
+        "200":
+          description: Created User Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  password:
+                    type: string
+                    format: password
+                  type:
+                    type: string
+                  phone:
+                    type: string
+                  dob:
+                    type: string
+                    format: date
+                  address:
+                    type: string
+                  profile:
+                    type: string
+                  _id:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                  _v:
+                    type: number
+
+  /api/users/{userId}:
+    post:
+      tags:
+        - Users
+      summary: Find user by ID
+      description: This can only be done by the logged in user.
+      operationId: getUserById
+      parameters:
+        - name: userId
+          in: path
+          description: ID of user to return
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    example: "62c6a49a087a13d74076e514"
+                  name:
+                    type: string
+                    example: "User One"
+                  email:
+                    type: string
+                    example: "userone@gmail.com"
+                  password:
+                    type: string
+                    format: password
+                    example: "password123"
+                  type:
+                    type: string
+                    description: User Roles
+                    enum:
+                      - Admin
+                      - User
+                  phone:
+                    type: string
+                    example: "0912345678"
+                  dob:
+                    type: string
+                    format: date
+                  address:
+                    type: string
+                    example: "Address"
+                  profile:
+                    type: string
+                    example: "apiuploads/0fe05c06-2f9d-4056-b80d-ffa37dee7c93_img1.jpg"
+                  createdAt:
+                    type: string
+                    format: date
+                  updatedAt:
+                    type: string
+                    format: date
+        "404":
+          description: User not found
+    put:
+      tags:
+        - Users
+      summary: Update a user
+      description: This can only be done by the logged in user.
+      operationId: updateUserId
+      parameters:
+        - name: userId
+          in: path
+          description: ID of user to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existing user data
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "User One"
+                email:
+                  type: string
+                  example: "Description01"
+                type:
+                  type: string
+                  description: User Roles
+                  enum:
+                    - Admin
+                    - User
+                phone:
+                  type: string
+                  example: "0912345678"
+                dob:
+                  type: string
+                  format: date
+                address:
+                  type: string
+                  example: "Address"
+                profile:
+                  type: string
+                  example: "apiuploads/0fe05c06-2f9d-4056-b80d-ffa37dee7c93_img1.jpg"
+                created_user_id:
+                  type: string
+                  example: "62fde243b554f4955fdf7914"
+                updated_user_id:
+                  type: string
+                  example: "62fde243b554f4955fdf7914"
+      responses:
+        "200":
+          description: Updated Successfully!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    example: "62fde243b554f4955fdf7914"
+                  name:
+                    type: string
+                    example: "User One"
+                  email:
+                    type: string
+                    example: "Description01"
+                  password:
+                    type: string
+                    format: password
+                    example: "password123"
+                  type:
+                    type: string
+                    description: User Roles
+                    enum:
+                      - Admin
+                      - User
+                  phone:
+                    type: string
+                    example: "0912345678"
+                  dob:
+                    type: string
+                    format: date
+                  address:
+                    type: string
+                    example: "Address"
+                  profile:
+                    type: string
+                    example: "apiuploads/0fe05c06-2f9d-4056-b80d-ffa37dee7c93_img1.jpg"
+                  created_user_id:
+                    type: string
+                    example: "62fde243b554f4955fdf7914"
+                  updated_user_id:
+                    type: string
+                    example: "62fde243b554f4955fdf7914"
+                  createdAt:
+                    type: string
+                    format: date
+                  updatedAt:
+                    type: string
+                    format: date
+        "405":
+          description: Invalid input
+    delete:
+      tags:
+        - Users
+      summary: Deletes a user
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          description: User id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted User Successfully!
+        "400":
+          description: Invalid post value
+
+  /api/users/search:
+    post:
+      tags:
+        - Users
+      summary: Get search users
+      description: This can only be done by the logged in user.
+      requestBody:
+        description: Search with Username, Email, Fromdate & Todate
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: "Example User"
+                email:
+                  type: string
+                  example: "example@gmail.com"
+                fromDate:
+                  type: string
+                  format: date
+                toDate:
+                  type: string
+                  format: date
+      responses:
+        "200":
+          description: Returns search Users
+        "400":
+          description: An error occured

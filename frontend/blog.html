@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="shortcut icon" href="img/favicon.png"/> -->
+  <link rel="stylesheet" href="common/css/import.css" media="all" />
+  <script src="common/js/blog.js"></script>
+</head>
+<body>
+  <div id="wrapper">
+    <header class="header">
+      <div class="header-container">
+        <p class="text">Blog</p>
+      </div>
+    </header>
+    <div class="content">
+      <!-- <ul>
+        <li>≪</li>
+        <li>1</li>
+        <li>2</li>
+        <li>≫</li>
+      </ul> -->
+      <div class="btn-content">
+        <div class="search-content">
+          <input type="text" name="name" placeholder="Search title">
+          <button onclick="search()">Search</button>
+        </div>
+        <div class="new-content">
+          <button onClick="addNew()">New</button>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Action</th>
+        </tr>
+        <tbody id="bloglist">
+        </tbody>
+      </table>
+
+      <!-- Dialog -->
+      <div id="overlay" onClick="hideDialog()"></div>
+        <div id="dialog">
+        <h2><span>Blog</span> <span onClick="hideDialog()">&times;</span></h2>
+          <form id="blogForm">
+            <input name="title" type="text" placeholder="Blog Name">
+            <textarea name="description" placeholder="Description"></textarea>
+            <button onclick="addBlog()">Send</button>
+          </form>
+        </div>
+      </div>
+    <footer>
+      <p class="text">Copyright &copy; 2023. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

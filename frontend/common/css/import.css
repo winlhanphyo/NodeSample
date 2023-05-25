@@ -1,0 +1,199 @@
+body {
+	line-height: 1.6;
+	margin: 0;
+	background-color: #edfaf6;
+	background-image: url(../img/img_bg.png);
+	color: #333;
+	font-family: cursive;
+	font-size: 16px;
+	overflow-y: scroll;
+}
+
+header {
+	position: relative;
+	padding: 5px 0;
+	box-shadow: 0px 1px 4px 2px rgb(0, 0, 0, .15);
+	background-color: #00c292;
+}
+
+.text {
+	margin: 0;
+	color: #ffffff;
+	text-align: center;
+}
+
+.content {
+	max-width: 90%;
+	margin: 50px auto 70px;
+	/* min-height: calc(100vh - 105px); */
+}
+
+/* .content ul {
+	list-style: none;
+	display: flex;
+	justify-content: flex-end;
+	padding: 0;
+}
+
+.content ul li {
+	margin: 0 2px;
+	padding: 5px 10px;
+	border: 1px solid #dfdfdf;
+	background: #ffffff;
+	cursor: pointer;
+}
+
+.content ul li:last-child {
+	margin: 0;
+}
+
+.content ul li:hover {
+	background-color: #00c292;
+	color: #ffffff;
+} */
+
+.content .btn-content {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.content .btn-content .search-content {
+	display: flex;
+}
+
+.content .btn-content .search-content button, .btn-update, .btn-delete, .new-content button, #blogForm button {
+	color: #fff;
+	background-color: #00c292;
+	box-shadow: none;
+	box-sizing: border-box;
+	border: 1px solid;
+	cursor: pointer;
+	padding: 6px;
+	border-radius: 5px;
+	font-family: cursive;
+}
+
+.new-content button, #blogForm button {
+	padding: 10px 20px;
+	margin-top: 5px;
+}
+
+.new-content button {
+	margin-top: 0;
+}
+
+.content .btn-content .search-content button:hover, .btn-update:hover, .btn-delete:hover, .new-content button:hover, #blogForm button:hover {
+	color: #000;
+	background-color: #fff;
+	box-shadow: none;
+	box-sizing: border-box;
+	border: 1px solid;
+}
+
+.content .btn-content .search-content input {
+	margin-right: 12px;
+	font-family: cursive;
+}
+
+.content table {
+	width: 100%;
+	background-color: #ffffff;
+	border: 1px solid #dfdfdf;
+	border-collapse: collapse;
+}
+
+.content table tr {
+	border-bottom: 1px solid #dfdfdf;
+}
+
+.content table tr th, #bloglist>tr th {
+	padding: 10px 0;
+	border-right: 1px solid #dfdfdf;
+}
+
+#bloglist>tr td {
+	padding: 10px 0;
+	border-right: 1px solid #dfdfdf;
+	text-align: center;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: 5px 0;
+	background-color: #00c292;
+	font-size: 12px;
+}
+
+/* Dialog */
+#overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.8;
+	display: none;
+}
+
+#dialog {
+	position: absolute;
+	top: 16%;
+	left: 35%;
+	width: 30%;
+	border: 4px solid #ccc;
+	background: #fff;
+	display: none;
+}
+
+#dialog h2 {
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+	padding: 8px;
+	background: #ddd;
+	/* font-size: 17px; */
+	background-color: #00c292;
+	color: #fff;
+}
+
+#dialog h2 span {
+	font-size: 20px;
+	padding: 0 5px;
+	color: #fff;
+	cursor: pointer;
+}
+
+#dialog form {
+	padding: 20px;
+}
+
+.search-content input[type=text] {
+	width: 160px;
+	padding: 6px;
+}
+
+#blogForm input[type=text] {
+	width: 97%;
+	margin-bottom: 12px;
+	padding: 6px;
+	font-family: cursive;
+}
+
+textarea {
+	padding: 6px;
+	font-family: Arial, Helvetica, sans-serif;
+	width: 97%;
+	height: 140px;
+	resize: none;
+	font-family: cursive;
+}
+
+input[type=submit] {
+	padding: 8px 18px;
+	margin-top: 10px;
+
+}
